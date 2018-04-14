@@ -1,0 +1,11 @@
+C:\Users\kkiri\Desktop\ISD\1.2.7\1.2.7\bin\Debug\netcoreapp2.0\1.2.7.deps.json
+C:\Users\kkiri\Desktop\ISD\1.2.7\1.2.7\bin\Debug\netcoreapp2.0\1.2.7.runtimeconfig.json
+C:\Users\kkiri\Desktop\ISD\1.2.7\1.2.7\bin\Debug\netcoreapp2.0\1.2.7.runtimeconfig.dev.json
+C:\Users\kkiri\Desktop\ISD\1.2.7\1.2.7\bin\Debug\netcoreapp2.0\1.2.7.dll
+C:\Users\kkiri\Desktop\ISD\1.2.7\1.2.7\bin\Debug\netcoreapp2.0\1.2.7.pdb
+C:\Users\kkiri\Desktop\ISD\1.2.7\1.2.7\obj\Debug\netcoreapp2.0\1.2.7.csprojResolveAssemblyReference.cache
+C:\Users\kkiri\Desktop\ISD\1.2.7\1.2.7\obj\Debug\netcoreapp2.0\1.2.7.csproj.CoreCompileInputs.cache
+C:\Users\kkiri\Desktop\ISD\1.2.7\1.2.7\obj\Debug\netcoreapp2.0\1.2.7.AssemblyInfoInputs.cache
+C:\Users\kkiri\Desktop\ISD\1.2.7\1.2.7\obj\Debug\netcoreapp2.0\1.2.7.AssemblyInfo.cs
+C:\Users\kkiri\Desktop\ISD\1.2.7\1.2.7\obj\Debug\netcoreapp2.0\1.2.7.dll
+C:\Users\kkiri\Desktop\ISD\1.2.7\1.2.7\obj\Debug\netcoreapp2.0\1.2.7.pdb
