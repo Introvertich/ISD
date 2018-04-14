@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace _1._2._7
 {
@@ -8,10 +12,10 @@ namespace _1._2._7
         {
             int feet = 64, goose = 0;
 
-            for(int rabbit = 0; rabbit <= 16; rabbit++)
+            for (int rabbit = 0; rabbit <= 16; rabbit++)
             {
-                feet -= rabbit*4;
-                goose = (64 - rabbit*4) / 2;
+                feet -= rabbit * 4;
+                goose = (64 - rabbit * 4) / 2;
                 Console.WriteLine("Goose = {0} and rabbit = {1}", goose, rabbit);
             }
 
@@ -19,3 +23,4 @@ namespace _1._2._7
         }
     }
 }
+
