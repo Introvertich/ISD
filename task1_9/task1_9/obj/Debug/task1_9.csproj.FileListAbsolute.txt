@@ -1,0 +1,5 @@
+C:\Users\Анастасия\Desktop\isd\lesson1\task1_9\task1_9\bin\Debug\task1_9.exe.config
+C:\Users\Анастасия\Desktop\isd\lesson1\task1_9\task1_9\bin\Debug\task1_9.exe
+C:\Users\Анастасия\Desktop\isd\lesson1\task1_9\task1_9\bin\Debug\task1_9.pdb
+C:\Users\Анастасия\Desktop\isd\lesson1\task1_9\task1_9\obj\Debug\task1_9.exe
+C:\Users\Анастасия\Desktop\isd\lesson1\task1_9\task1_9\obj\Debug\task1_9.pdb
