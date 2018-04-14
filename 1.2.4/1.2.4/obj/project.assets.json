@@ -670,11 +670,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kkiri\\Desktop\\ISD\\1.2.4\\1.2.4\\1.2.4.csproj",
+      "projectUniqueName": "C:\\Users\\kkiri\\Documents\\GitHub\\ISD\\1.2.4\\1.2.4\\1.2.4.csproj",
       "projectName": "1.2.4",
-      "projectPath": "C:\\Users\\kkiri\\Desktop\\ISD\\1.2.4\\1.2.4\\1.2.4.csproj",
+      "projectPath": "C:\\Users\\kkiri\\Documents\\GitHub\\ISD\\1.2.4\\1.2.4\\1.2.4.csproj",
       "packagesPath": "C:\\Users\\kkiri\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kkiri\\Desktop\\ISD\\1.2.4\\1.2.4\\obj\\",
+      "outputPath": "C:\\Users\\kkiri\\Documents\\GitHub\\ISD\\1.2.4\\1.2.4\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
