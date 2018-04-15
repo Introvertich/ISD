@@ -1,6 +1,0 @@
-C:\Users\Анастасия\Desktop\isd\lesson1\task1_3\task1_3\bin\Debug\task1_3.exe.config
-C:\Users\Анастасия\Desktop\isd\lesson1\task1_3\task1_3\bin\Debug\task1_3.exe
-C:\Users\Анастасия\Desktop\isd\lesson1\task1_3\task1_3\bin\Debug\task1_3.pdb
-C:\Users\Анастасия\Desktop\isd\lesson1\task1_3\task1_3\obj\Debug\task1_3.csprojResolveAssemblyReference.cache
-C:\Users\Анастасия\Desktop\isd\lesson1\task1_3\task1_3\obj\Debug\task1_3.exe
-C:\Users\Анастасия\Desktop\isd\lesson1\task1_3\task1_3\obj\Debug\task1_3.pdb
