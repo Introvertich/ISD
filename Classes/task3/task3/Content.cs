@@ -8,7 +8,6 @@ namespace task3
 {
     class Content
     {
-        public string bookContent;
         public string BookContent { get; set; }
         public void Show()
         {

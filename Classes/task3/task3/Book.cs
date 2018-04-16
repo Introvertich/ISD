@@ -8,9 +8,9 @@ namespace task3
 {
     class Book
     {
-        public Content MyCont;
-        public Title MyTitle;
-        public Author MyAuthor;
+        public Content MyCont { get; set; }
+        public Title MyTitle { get; set; }
+        public Author MyAuthor { get; set; }
         public void Show()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;

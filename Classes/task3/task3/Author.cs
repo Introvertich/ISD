@@ -8,8 +8,6 @@ namespace task3
 {
     class Author
     {
-        private string autName;
-
         public string AutName { get; set; }
         public void Show()
         {
