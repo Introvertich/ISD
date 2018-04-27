@@ -10,8 +10,8 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            Train[] trains = new Train[3]; int input;bool checker = false; 
-            for(int i=0;i<3;i++)
+            Train[] trains = new Train[8]; int input;bool checker = false; 
+            for(int i=0;i<8;i++)
             {
                 try
                 {
@@ -28,6 +28,7 @@ namespace ConsoleApplication1
             Array.Sort(trains, new Comparison<Train>((a, b) => a.TrainNum.CompareTo(b.TrainNum)));
             while (true)
             {
+                checker = false;
                 Console.WriteLine("Введите номер поезда, информацию о котором вы хотите узнать. Для выхода введите '-1'");
                 input = Convert.ToInt32(Console.ReadLine());
                 if (input == -1) break;
