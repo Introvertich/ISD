@@ -42,35 +42,92 @@ namespace FightClub
             progressBar2.Value = 100;
 
             label3.Text = roundString + Convert.ToString(round);
+
+            computer.SetBlock(RandomBodyPart());
         }
 
         private void Log(object sender, FightEventArgs e)
         {
-            label4.Text += "a";
+            string[] s = { roundString + Convert.ToString(round) + " " + e.Name + " " + e.HP + "\n" };
+            listBox1.Items.AddRange(s);
         }
-
+        
         private void button1_Click(object sender, EventArgs e)
         {
-            label5.Visible = false;
+            round++;
 
-            if (radioButton1.Checked)
+            if (round % 2 == 1)
             {
-                player.GetHit(BodyParts.Body);
+                button1.Text = "Hit";
+                label5.Visible = false;
 
-            }
-            else if (radioButton2.Checked)
-            {
-                player.GetHit(BodyParts.Body);
-            }
-            else if (radioButton3.Checked)
-            {
-                player.GetHit(BodyParts.Body);
+                computer.SetBlock(RandomBodyPart());
+
+                if (radioButton1.Checked)
+                {
+                    computer.GetHit(BodyParts.Head);
+
+                }
+                else if (radioButton2.Checked)
+                {
+                    computer.GetHit(BodyParts.Body);
+                }
+                else if (radioButton3.Checked)
+                {
+                    computer.GetHit(BodyParts.Legs);
+                }
+                else
+                {
+                    label5.Visible = true;
+                }
+
             }
             else
             {
-                label5.Visible = true;
+                button1.Text = "Block";
+                label5.Visible = false;
+                
+                if (radioButton1.Checked)
+                {
+                    player.SetBlock(BodyParts.Head);
+
+                }
+                else if (radioButton2.Checked)
+                {
+                    player.SetBlock(BodyParts.Body);
+                }
+                else if (radioButton3.Checked)
+                {
+                    player.SetBlock(BodyParts.Legs);
+                }
+                else
+                {
+                    label5.Visible = true;
+                }
+
+                player.GetHit(RandomBodyPart());
+            }
+
+            progressBar1.Value = player.HP;
+            progressBar2.Value = computer.HP;
+
+            if (player.HP <= 0)
+            {
+                string[] s = { computer.Name + " was won!" };
+                listBox1.Items.AddRange(s);
+            }
+            else if (computer.HP <= 0)
+            {
+                string[] s = { player.Name + " was won!" };
+                listBox1.Items.AddRange(s);
             }
         }
-        // как же впадлу
+
+        private BodyParts RandomBodyPart()
+        {
+            Random random = new Random();
+            int bodyPart = random.Next(0, 2);
+            return (BodyParts)bodyPart;
+        }
     }
 }

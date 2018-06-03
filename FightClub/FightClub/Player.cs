@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FightClub
+﻿namespace FightClub
 {
     enum BodyParts
     {
@@ -15,9 +9,9 @@ namespace FightClub
     class Player
     {
         public string Name { get; }
+        public int HP { get; set; }
+        public BodyParts Bloked { get; set; }
 
-        private int hp;
-        private BodyParts bloked;
         
         public delegate void FightStateHandler(object sender, FightEventArgs e);
         public event FightStateHandler Block;
@@ -27,32 +21,32 @@ namespace FightClub
         public Player(string name)
         {
             this.Name = name;
-            hp = 100;
+            HP = 100;
         }
 
         public void GetHit(BodyParts bodyParts)
         {
-            if(bodyParts != bloked)
+            if(bodyParts != Bloked)
             {
-                if(hp > 0)
+                if(HP > 0)
                 {
-                    hp -= 10;
-                    Wound?.Invoke(this, new FightEventArgs(Name, hp));
+                    HP -= 10;
+                    Wound?.Invoke(this, new FightEventArgs(Name, HP));
                 }
                 else
                 {
-                    Death?.Invoke(this, new FightEventArgs(Name, hp));
+                    Death?.Invoke(this, new FightEventArgs(Name, HP));
                 }
             }
             else
             {
-                Block?.Invoke(this, new FightEventArgs(Name, hp));
+                Block?.Invoke(this, new FightEventArgs(Name, HP));
             }
         }
 
         public void SetBlock(BodyParts bodyParts)
         {
-            bloked = bodyParts;
+            Bloked = bodyParts;
         }
     }
 }
