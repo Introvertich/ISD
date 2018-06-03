@@ -12,11 +12,14 @@ namespace FightClub
 {
     public partial class Form1 : Form
     {
-        Player player;
-        Player computer;
-        private string roundString = "Round: ";
-        private int round = 0;
-        string[] logString = { "" };
+        private Player player;
+        private Player computer;
+        private const string roundString = "Round: ";
+        private const string buttonHit = "Hit";
+        private const string buttonBlock = "Block";
+        private int round = 1;
+        private string[] logString = { "" };
+        private Form2 form2;
 
         public Form1()
         {
@@ -39,62 +42,36 @@ namespace FightClub
             label1.Text = player.Name;
             label2.Text = computer.Name;
 
+            label4.Text = Convert.ToString(player.HP);
+            label6.Text = Convert.ToString(computer.HP);
+
             label3.Text = roundString + Convert.ToString(round);
         }
 
         private void Log(object sender, FightEventArgs e)
         {
-            if (player.HP <= 0)
-            {
-                logString[0] = player.Name + " was won!";
-            }
-            else if (computer.HP <= 0)
-            {
-                logString[0] = computer.Name + " was won!";
-            }
-            else
-            {
-                logString[0] = roundString + Convert.ToString(round) + " " + e.Name + " " + e.HP + "\n";
-            }
+            logString[0] = roundString + Convert.ToString(round) + " " + e.Name + " " + e.HP + " HP";
             listBox1.Items.AddRange(logString);
         }
         
         private void button1_Click(object sender, EventArgs e)
         {
-            // if hp > 0
-                // if что-то выбрано
-                // ++ раунд
-                // смотря какой раунд
-                // if нападаем()
-                // else защищаемя()
-            // else начать заново
-
-            if (player.HP > 0 && computer.HP > 0)
+            if (radioButton1.Checked || radioButton2.Checked || radioButton3.Checked)
             {
-                if (radioButton1.Checked || radioButton2.Checked || radioButton3.Checked)
+                if (button1.Text == buttonHit)
                 {
-                    round++;
-
-                    if (round % 2 == 1)
-                    {
-                        Hit();
-                    }
-                    else
-                    {
-                        Block();
-                    }
-
-                    progressBar1.Value = player.HP;
-                    progressBar2.Value = computer.HP;
+                    Hit();
                 }
                 else
                 {
-                    label5.Visible = true;
+                    Block();
                 }
+                CheckGameOver();
+                UpdateInterface();
             }
             else
             {
-
+                label5.Visible = true;
             }
         }
 
@@ -104,49 +81,69 @@ namespace FightClub
             int bodyPart = random.Next(0, 2);
             return (BodyParts)bodyPart;
         }
-
-        private void Hit()
+        
+        private BodyParts ReturnCheckBox()
         {
-            button1.Text = "Block";
-            label5.Visible = false;
-
-            computer.SetBlock(RandomBodyPart());
-
             if (radioButton1.Checked)
             {
-                computer.GetHit(BodyParts.Head);
+                return BodyParts.Head;
 
             }
             else if (radioButton2.Checked)
             {
-                computer.GetHit(BodyParts.Body);
+                return BodyParts.Body;
             }
-            else if (radioButton3.Checked)
+            else
             {
-                computer.GetHit(BodyParts.Legs);
+                return BodyParts.Legs;
             }
+        }
+
+        private void Hit()
+        {
+            computer.SetBlock(RandomBodyPart());
+
+            computer.GetHit(ReturnCheckBox());
+
         }
 
         private void Block()
         {
-            button1.Text = "Hit";
-            label5.Visible = false;
-
-            if (radioButton1.Checked)
-            {
-                player.SetBlock(BodyParts.Head);
-
-            }
-            else if (radioButton2.Checked)
-            {
-                player.SetBlock(BodyParts.Body);
-            }
-            else if (radioButton3.Checked)
-            {
-                player.SetBlock(BodyParts.Legs);
-            }
-
+            player.SetBlock(ReturnCheckBox());
             player.GetHit(RandomBodyPart());
+        }
+
+        private void UpdateInterface()
+        {
+            if (button1.Text == buttonBlock)
+            {
+                round++;
+                button1.Text = buttonHit;
+            }
+            else
+            {
+                button1.Text = buttonBlock;
+            }
+            label3.Text = roundString + Convert.ToString(round);
+            progressBar1.Value = player.HP;
+            progressBar2.Value = computer.HP;
+            label4.Text = Convert.ToString(player.HP);
+            label6.Text = Convert.ToString(computer.HP);
+            label5.Visible = false;
+        }
+
+        private void CheckGameOver()
+        {
+            if (player.HP <= 0)
+            {
+                form2 = new Form2(computer.Name + " was won!");
+                form2.Show();
+            }
+            else if (computer.HP <= 0)
+            {
+                form2 = new Form2(player.Name + " was won!");
+                form2.Show();
+            }
         }
     }
 }
