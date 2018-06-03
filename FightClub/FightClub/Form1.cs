@@ -16,6 +16,7 @@ namespace FightClub
         Player computer;
         private string roundString = "Round: ";
         private int round = 0;
+        string[] logString = { "" };
 
         public Form1()
         {
@@ -38,88 +39,62 @@ namespace FightClub
             label1.Text = player.Name;
             label2.Text = computer.Name;
 
-            progressBar1.Value = 100;
-            progressBar2.Value = 100;
-
             label3.Text = roundString + Convert.ToString(round);
-
-            computer.SetBlock(RandomBodyPart());
         }
 
         private void Log(object sender, FightEventArgs e)
         {
-            string[] s = { roundString + Convert.ToString(round) + " " + e.Name + " " + e.HP + "\n" };
-            listBox1.Items.AddRange(s);
+            if (player.HP <= 0)
+            {
+                logString[0] = player.Name + " was won!";
+            }
+            else if (computer.HP <= 0)
+            {
+                logString[0] = computer.Name + " was won!";
+            }
+            else
+            {
+                logString[0] = roundString + Convert.ToString(round) + " " + e.Name + " " + e.HP + "\n";
+            }
+            listBox1.Items.AddRange(logString);
         }
         
         private void button1_Click(object sender, EventArgs e)
         {
-            round++;
+            // if hp > 0
+                // if что-то выбрано
+                // ++ раунд
+                // смотря какой раунд
+                // if нападаем()
+                // else защищаемя()
+            // else начать заново
 
-            if (round % 2 == 1)
+            if (player.HP > 0 && computer.HP > 0)
             {
-                button1.Text = "Hit";
-                label5.Visible = false;
-
-                computer.SetBlock(RandomBodyPart());
-
-                if (radioButton1.Checked)
+                if (radioButton1.Checked || radioButton2.Checked || radioButton3.Checked)
                 {
-                    computer.GetHit(BodyParts.Head);
+                    round++;
 
-                }
-                else if (radioButton2.Checked)
-                {
-                    computer.GetHit(BodyParts.Body);
-                }
-                else if (radioButton3.Checked)
-                {
-                    computer.GetHit(BodyParts.Legs);
+                    if (round % 2 == 1)
+                    {
+                        Hit();
+                    }
+                    else
+                    {
+                        Block();
+                    }
+
+                    progressBar1.Value = player.HP;
+                    progressBar2.Value = computer.HP;
                 }
                 else
                 {
                     label5.Visible = true;
                 }
-
             }
             else
             {
-                button1.Text = "Block";
-                label5.Visible = false;
-                
-                if (radioButton1.Checked)
-                {
-                    player.SetBlock(BodyParts.Head);
 
-                }
-                else if (radioButton2.Checked)
-                {
-                    player.SetBlock(BodyParts.Body);
-                }
-                else if (radioButton3.Checked)
-                {
-                    player.SetBlock(BodyParts.Legs);
-                }
-                else
-                {
-                    label5.Visible = true;
-                }
-
-                player.GetHit(RandomBodyPart());
-            }
-
-            progressBar1.Value = player.HP;
-            progressBar2.Value = computer.HP;
-
-            if (player.HP <= 0)
-            {
-                string[] s = { computer.Name + " was won!" };
-                listBox1.Items.AddRange(s);
-            }
-            else if (computer.HP <= 0)
-            {
-                string[] s = { player.Name + " was won!" };
-                listBox1.Items.AddRange(s);
             }
         }
 
@@ -128,6 +103,50 @@ namespace FightClub
             Random random = new Random();
             int bodyPart = random.Next(0, 2);
             return (BodyParts)bodyPart;
+        }
+
+        private void Hit()
+        {
+            button1.Text = "Block";
+            label5.Visible = false;
+
+            computer.SetBlock(RandomBodyPart());
+
+            if (radioButton1.Checked)
+            {
+                computer.GetHit(BodyParts.Head);
+
+            }
+            else if (radioButton2.Checked)
+            {
+                computer.GetHit(BodyParts.Body);
+            }
+            else if (radioButton3.Checked)
+            {
+                computer.GetHit(BodyParts.Legs);
+            }
+        }
+
+        private void Block()
+        {
+            button1.Text = "Hit";
+            label5.Visible = false;
+
+            if (radioButton1.Checked)
+            {
+                player.SetBlock(BodyParts.Head);
+
+            }
+            else if (radioButton2.Checked)
+            {
+                player.SetBlock(BodyParts.Body);
+            }
+            else if (radioButton3.Checked)
+            {
+                player.SetBlock(BodyParts.Legs);
+            }
+
+            player.GetHit(RandomBodyPart());
         }
     }
 }
