@@ -78,7 +78,7 @@ namespace FightClub
         private BodyParts RandomBodyPart()
         {
             Random random = new Random();
-            int bodyPart = random.Next(0, 2);
+            int bodyPart = random.Next(0, 3);
             return (BodyParts)bodyPart;
         }
         
